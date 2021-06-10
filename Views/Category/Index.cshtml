@@ -1,0 +1,42 @@
+﻿@model List<StockAppMVC.Models.CategoryViewModel>
+@{ ViewBag.Title = "Create Category";
+}
+
+<h1>Create Category</h1>
+
+<div class="card">
+    <div class="card-header text-primary">
+        <a class="btn btn-success" asp-controller="Category" asp-action="Create">Add Category</a>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>CreatedAt</th>
+                    <th>View Category</th>
+                    <th>Update Category</th>
+                    <th>Delete Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>@category.Id</td>
+                        <td>@category.Name</td>
+                        <td>@category.CreatedAt</td>
+                        <td> <a class="btn btn-primary" asp-action="FindById" asp-route-id="@category.Id">View Category</a></td>
+                        <td><a class="btn btn-primary" asp-action="Update" asp-route-id="@category.Id">Update Category</a></td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="Delete" asp-route-id="@category.Id">Delete Category</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
